@@ -1,16 +1,16 @@
 # Towers of Hanoi
 
-~ ./hanoi 3 \
+~ ./hanoi 3
 
 TOWERS OF HANOI: 3 DISKS \
-  =|=      |       | \
- ==|==     |       | \
-===|===    |       | \
+  =|=      |       |     \
+ ==|==     |       |     \
+===|===    |       |     \
 
-MOVE DISK FROM POLE 1 TO POLE 3
-   |       |       |
- ==|==     |       |
-===|===    |      =|=
+MOVE DISK FROM POLE 1 TO POLE 3 \
+   |       |       |            \
+ ==|==     |       |            \
+===|===    |      =|=           \
 
 MOVE DISK FROM POLE 1 TO POLE 2
    |       |       |
