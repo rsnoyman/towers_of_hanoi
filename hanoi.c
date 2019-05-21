@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "stack.h"
 
+void solve_hanoi(stack board[N_POLES], int n);
 void solve(stack board[N_POLES], int n, int start, int end, int aux, int spacing);
 
 int main(int argc, char *argv[]){
@@ -29,13 +30,19 @@ int main(int argc, char *argv[]){
 
 	show_board(board, n);
 
-	solve(board, n, 0, 2, 1, n);
+	solve_hanoi(board, n);
 
 	board_free(board);
 	
 	return 0;
 }
 
+// Wrapper call to solve initial board
+void solve_hanoi(stack board[N_POLES], int n){
+	solve(board, n, 0, 2, 1, n);
+}
+
+// Recursive Solver
 void solve(stack board[N_POLES], int n, int start, int end, int aux, int spacing){
 
 	if (n == 0) return;

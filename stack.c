@@ -1,6 +1,4 @@
-// Implementation of stack ADT with a linked list
-//
-// completion left as an exercise
+// Implementation of stack ADT for towers of hanoi		   
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -19,6 +17,7 @@ struct stack_internals {
 
 void print_block(int n, int size);
 
+// Create a new stack
 stack stack_create(void){
 	stack s = malloc(sizeof(*s));
 	if (s == NULL) {
@@ -32,18 +31,7 @@ stack stack_create(void){
     return s;
 }           
 
-void stack_free(stack s){
-	while (s->size > 0){
-		stack_pop(s);
-	}
-	free(s);
-} 
-
-void board_free(stack board[]){
-	for (int i = 0; i < N_POLES; ++i) 
-		stack_free(board[i]);
-}
-
+// add new block of size 'size' to stack
 void stack_push(stack s, int size){
 	block b = malloc(sizeof(*b));
 	
@@ -54,6 +42,7 @@ void stack_push(stack s, int size){
 	s->size++;
 }
 
+// remove next item from stack and return it
 int stack_pop(stack s){
 	assert(s->size > 0);
 
@@ -68,11 +57,27 @@ int stack_pop(stack s){
 	return ret;
 }
 
+// return size of top block
 int stack_top(stack s){
 	assert(s->size > 0);
 	return s->top->size;
-}  
+} 
 
+// free a stack
+void stack_free(stack s){
+	while (s->size > 0){
+		stack_pop(s);
+	}
+	free(s);
+}
+
+// free a board
+void board_free(stack board[]){
+	for (int i = 0; i < N_POLES; ++i) 
+		stack_free(board[i]);
+} 
+
+// Move block from f to t
 void stack_pop_push(stack f, stack t){
 	assert(f->size > 0);
 
@@ -86,6 +91,7 @@ void stack_pop_push(stack f, stack t){
 	f->size--;
 }
 
+// show stack
 void show_stack(stack s, int n){
 	for (block curr = s->top; curr != NULL; curr = curr->next){
 		print_block(n, curr->size);
@@ -93,6 +99,7 @@ void show_stack(stack s, int n){
 	}
 }
 
+// show hanoi board in ASCII art
 void show_board(stack board[], int n){
 
 	block curr[N_POLES];
@@ -118,11 +125,12 @@ void show_board(stack board[], int n){
 
 }
 
+// return stack size
 int stack_size(stack s){
-		return s->size;
-		return s->top->size;
+	return s->size;
 }
 
+// print a block of size 'size' with 'n' white space
 void print_block(int n, int size){
 	for (int i = 0; i < n - size; ++i)
 		printf(" ");
