@@ -111,6 +111,7 @@ void show_board(stack board[], int n){
 	for (int j = n; j > 0; --j){
 		for (int i = 0; i < N_POLES; ++i){
 
+			// If stack is less than height j, print empty block
 			if (board[i]->size < j){
 				print_block(n, 0);
 				continue;
