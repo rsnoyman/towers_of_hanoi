@@ -1,7 +1,7 @@
 #! /usr/bin/env python3
 
 import sys 
-from hanoi_tools import * 
+from hanoi import * 
 
 n = -1
 
