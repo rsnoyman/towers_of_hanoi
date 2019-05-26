@@ -1,27 +1,65 @@
-#! /usr/bin/env python3
+BOARD_SIZE = 3
 
-import sys 
-from hanoi_tools import * 
+def block_str(n, size):
+	block = ''
 
-n = -1
+	block += ' '*(n-size)
+	block += '='*(size)
+	block += '|'
+	block += '='*(size)
+	block += ' '*(n-size)
 
-# Attempt to read from command line
-if len(sys.argv) == 2:
-	try:
-		n = int(sys.argv[1])
-	except:
-		pass
-
-# Else ask for input until valid n given
-while not (isinstance(n, int) and n > 0):
-	try:
-		n = int(input("Please enter a positive integer: "))
-	except:
-		continue
-
-board = Board(n)
-
-solve_hanoi(board)
+	return block
 
 
+class Board():
+	def __init__(self, n):
+		self.board = [list(range(n,0,-1)), [], []]
+		self.n = n
 
+	def __len__(self):
+		return self.n
+
+	def __str__(self):
+		output = ''
+
+		curr = []
+		for pole in range(3):
+			curr.append(len(self.board[pole]) - 1)
+
+		for lvl in range(self.n,0,-1):
+			for pole in range(3):
+				# If stack is less than height lvl, print empty block
+				if len(self.board[pole]) < lvl:
+					output += block_str(self.n, 0)
+				else:
+					output += block_str(self.n, self.board[pole][curr[pole]])
+					curr[pole] = curr[pole] - 1
+			output += '\n'
+
+		return output
+	
+	def move_disc(self, f, t):
+		disc = self.board[f].pop()
+		self.board[t].append(disc)
+
+### The Nice Function ###
+def solve_rec(board, n, start, end, aux, spacing):
+	if n == 0:
+		return
+
+	solve_rec(board, n-1, start, aux, end, spacing)
+
+	print("MOVE DISC FROM POLE {} TO {}".format(start + 1, end + 1))
+	board.move_disc(start, end)
+	print(board)
+
+	solve_rec(board, n-1, aux, end, start, spacing)
+
+def solve_hanoi(board):
+	print("TOWERS OF HANOI - {} DISCS".format(len(board)))
+	print(board)
+	solve_rec(board, len(board), 0, 2, 1, len(board))
+
+
+		
