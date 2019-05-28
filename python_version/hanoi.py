@@ -24,11 +24,11 @@ class Board():
 		output = ''
 
 		curr = []
-		for pole in range(3):
+		for pole in range(BOARD_SIZE):
 			curr.append(len(self.board[pole]) - 1)
 
 		for lvl in range(self.n,0,-1):
-			for pole in range(3):
+			for pole in range(BOARD_SIZE):
 				# If stack is less than height lvl, print empty block
 				if len(self.board[pole]) < lvl:
 					output += block_str(self.n, 0)
