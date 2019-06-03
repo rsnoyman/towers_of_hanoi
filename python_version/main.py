@@ -19,9 +19,7 @@ while not (isinstance(n, int) and n > 0):
 	except:
 		continue
 
-board = Board(n)
-
-solve_hanoi(board)
+solve_hanoi(n)
 
 
 
