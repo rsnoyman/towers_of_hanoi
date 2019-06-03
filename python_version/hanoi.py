@@ -56,10 +56,11 @@ def solve_rec(board, n, start, end, aux, spacing):
 
 	solve_rec(board, n-1, aux, end, start, spacing)
 
-def solve_hanoi(board):
-	print("TOWERS OF HANOI - {} DISCS".format(len(board)))
+def solve_hanoi(n):
+        board = Board(n)
+	print("TOWERS OF HANOI - {} DISCS".format(n))
 	print(board)
-	solve_rec(board, len(board), 0, 2, 1, len(board))
+	solve_rec(board, n, 0, 2, 1, n)
 
 
 		
