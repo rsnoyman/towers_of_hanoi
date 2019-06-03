@@ -1,7 +1,7 @@
 #! /usr/bin/env python3
 
 import sys 
-from hanoi import * 
+from hanoi import solve_hanoi 
 
 n = -1
 
