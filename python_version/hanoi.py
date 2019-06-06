@@ -23,6 +23,7 @@ class Board():
 	def __str__(self):
 		output = ''
 
+		# Curr is top of each stack
 		curr = []
 		for pole in range(BOARD_SIZE):
 			curr.append(len(self.board[pole]) - 1)
@@ -44,23 +45,23 @@ class Board():
 		self.board[t].append(disc)
 
 ### The Nice Function ###
-def solve_rec(board, n, start, end, aux, spacing):
+def solve_rec(board, n, start, end, aux):
 	if n == 0:
 		return
 
-	solve_rec(board, n-1, start, aux, end, spacing)
+	solve_rec(board, n-1, start, aux, end)
 
 	print("MOVE DISC FROM POLE {} TO {}".format(start + 1, end + 1))
 	board.move_disc(start, end)
 	print(board)
 
-	solve_rec(board, n-1, aux, end, start, spacing)
+	solve_rec(board, n-1, aux, end, start)
 
 def solve_hanoi(n):
 	board = Board(n)
 	print("TOWERS OF HANOI - {} DISCS".format(n))
 	print(board)
-	solve_rec(board, n, 0, 2, 1, n)
+	solve_rec(board, n, 0, 2, 1)
 
 
 		
