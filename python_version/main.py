@@ -1,7 +1,7 @@
 #! /usr/bin/env python3
 
-import sys 
-from hanoi import solve_hanoi 
+import sys
+from hanoi import solve_hanoi
 
 n = -1
 
@@ -20,6 +20,3 @@ while not (isinstance(n, int) and n > 0):
 		continue
 
 solve_hanoi(n)
-
-
-
