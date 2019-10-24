@@ -39,7 +39,7 @@ class Board():
 			output += '\n'
 
 		return output
-	
+
 	def move_disc(self, f, t):
 		disc = self.board[f].pop()
 		self.board[t].append(disc)
@@ -62,6 +62,3 @@ def solve_hanoi(n):
 	print("TOWERS OF HANOI - {} DISCS".format(n))
 	print(board)
 	solve_rec(board, n, 0, 2, 1)
-
-
-		
