@@ -1,0 +1,5 @@
+TOWERS OF HANOI: 1 DISKS
+=|=  |   |  
+
+MOVE DISK FROM POLE 1 TO POLE 3
+ |   |  =|= 
