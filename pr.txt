@@ -1,0 +1,5 @@
+git checkout -b new_branch
+./hanoi 9 > examples/9.txt
+git add examples/9.txt
+git commit -m '9'
+git push --set-upstream origin new_branch
